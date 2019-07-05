@@ -1,0 +1,11 @@
+query myChats {
+	myChats {
+		id
+		title
+    messages(limit: 1) {
+      id
+      text
+      chatId
+    }
+	}
+}

@@ -1,0 +1,15 @@
+query Chat($chatId: ID!, $lastId: ID) {
+	chat(id: $chatId) {
+		id, 
+		title, 
+		messages(lastId: $lastId) {
+			id
+			text
+			chatId
+		}
+		members {
+			id
+			username
+		}
+	}
+}
