@@ -1,0 +1,6 @@
+mutation sendMessage($chatId: ID!, $text: String!) {
+  sendMessage(chatId: $chatId, text: $text) {
+    id
+    text
+  }
+}

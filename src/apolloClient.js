@@ -7,7 +7,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:4000/graphql',
+  uri: 'ws://simple-graphql-chat.herokuapp.com/graphql',
   options: {
     reconnect: true,
     connectionParams: {
@@ -17,7 +17,7 @@ const wsLink = new WebSocketLink({
 })
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: 'https://simple-graphql-chat.herokuapp.com/',
   credentials: 'same-origin',
 })
 

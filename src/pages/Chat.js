@@ -3,11 +3,11 @@ import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import SubscribeToNewMessages from './SubscribeToNewMessages'
 import CHAT_QUERY from '@/queries/CHAT_QUERY.gql'
+import SendMessage from '@/components/SendMessage'
 
 const ChatMembers = ({ members }) =>
   members.map(user =>
     $('div', { key: user.id }, user.username))
-
 
 const ChatMessages = ({ messages, fetchMoreMessages }) => {
   const lastId = messages.length && messages[messages.length - 1].id
@@ -51,6 +51,7 @@ const Main = ({ match }) =>
           $('div', null, title),
           $(SubscribeToNewMessages, { chatIds: match.params.id, CHAT_QUERY }),
           $(ChatMembers, { members }),
+          $(SendMessage, { chatId: match.params.id }),
           $(ChatMessages, {
             messages,
             fetchMoreMessages: lastId => fetchMoreMessages(fetchMore, match.params.id, lastId),

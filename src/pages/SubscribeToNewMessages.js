@@ -14,16 +14,15 @@ const NEW_MESSAGE_SUBSCRIPTION = gql`
 `
 
 const SubscribeToNewMessages = ({ chatIds }) => {
-  console.log(chatIds)
+  console.log({ chatIds })
 
   return $(Subscription, {
     subscription: NEW_MESSAGE_SUBSCRIPTION,
     variables: { chatIds },
     onSubscriptionData: ({ client, subscriptionData: { data: { newMessage } } }) => {
-      console.log(newMessage)
+      console.log({ newMessage })
       const { chat } = client.readQuery({ query: CHAT_QUERY, variables: { chatId: newMessage.chatId } })
     
-      console.log(newMessage)
       client.writeQuery({
         query: CHAT_QUERY,
         data: {
